@@ -1,1 +1,3 @@
-# tic-tac-toe
+## The Odin Project
+This project was built using [The Odin Project curriculum](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe)
+The intent of this project was...
