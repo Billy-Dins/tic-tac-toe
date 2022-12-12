@@ -1,0 +1,26 @@
+body {
+    background-color: steelblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+main {
+    min-width: 350px;
+    max-width: 500px;
+    width: 70%;
+    height: 40%;
+}
+#playArea {
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.gridSquare {
+    padding: 0px;
+}
