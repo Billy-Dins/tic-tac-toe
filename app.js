@@ -1,6 +1,7 @@
 const player = (name,type) => {
     return {name, type}
 }
+// Grid square render function
 const renderPlayArea = () => {
     document.querySelector('.gridSquare.zero').textContent = Gameboard.gameboard[0]
     document.querySelector('.gridSquare.one').textContent = Gameboard.gameboard[1]
