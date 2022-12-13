@@ -8,14 +8,18 @@ body {
     height: 100vh;
 }
 main {
-    min-width: 350px;
-    max-width: 500px;
+    min-width: 400px;
+    max-width: 600px;
     width: 70%;
     height: 40%;
 }
 #playArea {
+    min-width: 350px;
+    max-width: 500px;
+    width: 70%;
+    height: 40%;
     width: 100%;
-    height: 100%;
+    height: 90%;
     background-color: aliceblue;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
