@@ -26,5 +26,6 @@ main {
     grid-template-rows: repeat(3, 1fr);
 }
 .gridSquare {
+    font-size: 5rem;
     padding: 0px;
 }

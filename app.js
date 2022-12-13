@@ -1,3 +1,18 @@
+const Gameboard = {
+    counter: true,
+    changeTurn: () => {
+        if (Gameboard.counter === true) {
+            return Gameboard.counter = false
+        } else {
+            return Gameboard.counter = true
+        }
+    },
+    gameboard: ['','','','','','','','',''],
+    init: () => {
+        const player1 = player('Luke', 'Human')
+    },
+}
+
 const player = (name,type) => {
     return {name, type}
 }
@@ -87,26 +102,6 @@ const checkWinCondition = () => {
         winCondition('O')
     }
 };
-/*     || (board[3] && board[4] && board[5])  === 'X' 
-    || (board[3] && board[4] && board[5])  === 'O'
-    || (board[6] && board[7] && board[8])  === 'X' 
-    || (board[6] && board[7] && board[8])  === 'O'
-
-    || (board[0] && board[3] && board[6])  === 'X' 
-    || (board[0] && board[3] && board[6])  === 'O'
-    || (board[1] && board[4] && board[7])  === 'X' 
-    || (board[1] && board[4] && board[7])  === 'O'
-    || (board[2] && board[5] && board[8])  === 'X' 
-    || (board[2] && board[5] && board[8])  === 'O'
-
-    || (board[0] && board[4] && board[8])  === 'X' 
-    || (board[0] && board[4] && board[8])  === 'O'
-    || (board[2] && board[4] && board[6])  === 'X' 
-    || (board[2] && board[4] && board[6])  === 'O'
-    ) {
-        console.log('winner')
-    }
-} */
 
 const locationSelection = (id, selection) => {
     let makeSelection = Gameboard.gameboard.splice(id,1, selection);
@@ -114,23 +109,6 @@ const locationSelection = (id, selection) => {
     checkWinCondition()
     return makeSelection
 }
-
-
-let Gameboard = {
-    counter: true,
-    changeTurn: () => {
-        if (Gameboard.counter === true) {
-            return Gameboard.counter = false
-        } else {
-            return Gameboard.counter = true
-        }
-    },
-    gameboard: ['','','','','','','','',''],
-    init: () => {
-        const player1 = player('Luke', 'Human')
-    },
-}
-
 
 const resetGrid = () => {
     for (let i = 0; i < Gameboard.gameboard.length; i++) {
