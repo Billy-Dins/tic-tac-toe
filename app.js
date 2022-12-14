@@ -1,4 +1,5 @@
 const Gameboard = {
+  gameboard: ['', '', '', '', '', '', '', '', ''],
   counter: true,
   changeTurn: () => {
     if (Gameboard.counter === true) {
@@ -7,15 +8,17 @@ const Gameboard = {
       Gameboard.counter = true
     }
   },
-  gameboard: ['', '', '', '', '', '', '', '', ''],
+  player: (name, marker) => {
+    return { name, marker }
+  },
   init: () => {
-    const player1 = player('Luke', 'Human')
+    const player1 = Gameboard.player('Luke', 'X')
+    const player2 = Gameboard.player('Elza', 'O')
+    return [player1, player2]
   }
 }
+console.log(Gameboard.init())
 
-const player = (name, type) => {
-  return { name, type }
-}
 const gridArea = document.querySelectorAll('.gridSquare')
 gridArea.forEach(element => element.addEventListener('click', () => {
   const location = element.getAttribute('id')
@@ -28,15 +31,24 @@ gridArea.forEach(element => element.addEventListener('click', () => {
 )
 
 const renderPlayArea = () => {
-  document.querySelector('.gridSquare.zero').textContent = Gameboard.gameboard[0]
-  document.querySelector('.gridSquare.one').textContent = Gameboard.gameboard[1]
-  document.querySelector('.gridSquare.two').textContent = Gameboard.gameboard[2]
-  document.querySelector('.gridSquare.three').textContent = Gameboard.gameboard[3]
-  document.querySelector('.gridSquare.four').textContent = Gameboard.gameboard[4]
-  document.querySelector('.gridSquare.five').textContent = Gameboard.gameboard[5]
-  document.querySelector('.gridSquare.six').textContent = Gameboard.gameboard[6]
-  document.querySelector('.gridSquare.seven').textContent = Gameboard.gameboard[7]
-  document.querySelector('.gridSquare.eight').textContent = Gameboard.gameboard[8]
+  document.querySelector('.gridSquare.zero').textContent =
+    Gameboard.gameboard[0]
+  document.querySelector('.gridSquare.one').textContent =
+    Gameboard.gameboard[1]
+  document.querySelector('.gridSquare.two').textContent =
+   Gameboard.gameboard[2]
+  document.querySelector('.gridSquare.three').textContent =
+   Gameboard.gameboard[3]
+  document.querySelector('.gridSquare.four').textContent =
+   Gameboard.gameboard[4]
+  document.querySelector('.gridSquare.five').textContent =
+   Gameboard.gameboard[5]
+  document.querySelector('.gridSquare.six').textContent =
+   Gameboard.gameboard[6]
+  document.querySelector('.gridSquare.seven').textContent =
+   Gameboard.gameboard[7]
+  document.querySelector('.gridSquare.eight').textContent =
+   Gameboard.gameboard[8]
 }
 
 // Alternates between player one's turn and player two's turn
@@ -70,43 +82,61 @@ const checkWinCondition = () => {
   const board = Gameboard.gameboard
   if (board[0] === 'X' && board[1] === 'X' && board[2] === 'X') {
     winCondition('X')
+    return true
   } else if (board[0] === 'O' && board[1] === 'O' && board[2] === 'O') {
     winCondition('O')
+    return true
   } else if (board[3] === 'X' && board[4] === 'X' && board[5] === 'X') {
     winCondition('X')
+    return true
   } else if (board[3] === 'O' && board[4] === 'O' && board[5] === 'O') {
     winCondition('O')
+    return true
   } else if (board[6] === 'X' && board[7] === 'X' && board[8] === 'X') {
     winCondition('X')
+    return true
   } else if (board[6] === 'O' && board[7] === 'O' && board[8] === 'O') {
     winCondition('O')
+    return true
   } else if (board[0] === 'X' && board[3] === 'X' && board[6] === 'X') {
     winCondition('X')
+    return true
   } else if (board[0] === 'O' && board[3] === 'O' && board[6] === 'O') {
     winCondition('O')
+    return true
   } else if (board[1] === 'X' && board[4] === 'X' && board[7] === 'X') {
     winCondition('X')
+    return true
   } else if (board[1] === 'O' && board[4] === 'O' && board[7] === 'O') {
     winCondition('O')
+    return true
   } else if (board[2] === 'X' && board[5] === 'X' && board[8] === 'X') {
     winCondition('X')
+    return true
   } else if (board[2] === 'O' && board[5] === 'O' && board[8] === 'O') {
     winCondition('O')
+    return true
   } else if (board[0] === 'X' && board[4] === 'X' && board[8] === 'X') {
     winCondition('X')
+    return true
   } else if (board[0] === 'O' && board[4] === 'O' && board[8] === 'O') {
     winCondition('O')
+    return true
   } else if (board[2] === 'X' && board[4] === 'X' && board[6] === 'X') {
     winCondition('X')
+    return true
   } else if (board[2] === 'O' && board[4] === 'O' && board[6] === 'O') {
     winCondition('O')
+    return true
   }
 }
 
 const locationSelection = (id, selection) => {
   const makeSelection = Gameboard.gameboard.splice(id, 1, selection)
   renderPlayArea()
-  checkWinCondition()
+  if (checkWinCondition() === true) {
+    console.log('hello')
+  }
   return makeSelection
 }
 

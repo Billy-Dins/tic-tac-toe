@@ -40,8 +40,8 @@ body {
     text-align: center;
     grid-column: 2 / 3;
     grid-row: 3 / 4;
-    color: rgb(248, 91, 248);
-    text-shadow: 2px 2px rgb(127, 240, 255);
+    text-shadow: 2px 2px rgb(248, 91, 248);
+    color:  rgb(127, 240, 255);
     height: 100%;
     font-size: 3rem;
     font-family: 'Kenia', cursive;
