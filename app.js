@@ -63,7 +63,7 @@ const playerSelection = () => {
 
 const winCondition = (winner) => {
   const displayContainer = document.querySelector('#displayContainer')
-  displayContainer.setAttribute('style', 'z-index: 1;')
+  displayContainer.setAttribute('style', 'z-index: 2;')
   const display = document.createElement('div')
   display.setAttribute('id', 'display')
   const displayText = document.createElement('div')
@@ -145,8 +145,7 @@ const resetGrid = () => {
   for (let i = 0; i < Gameboard.gameboard.length; i++) {
     Gameboard.gameboard.splice(i, 1, '')
   };
-  const displayContainer = document.querySelector('#displayContainer')
-  displayContainer.removeAttribute('style', 'z-index: 1;')
+  document.querySelector('#displayContainer').removeAttribute('style', 'z-index: 1;')
   Gameboard.counter = true
   document.querySelector('#display').remove()
   renderPlayArea()

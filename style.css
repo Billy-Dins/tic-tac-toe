@@ -1,8 +1,26 @@
 :root {
     --main-bg-color: rgb(113, 162, 196);
 }
-
+.hidden {
+    display: none;
+}
 body {
+    margin: 0px;
+}
+#startScreen {
+    height: 100vh;
+    width: 100vw;
+}
+#playerSelection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
+#mainBoard {
     background-color: var(--main-bg-color);
     display: grid;
     justify-content: center;
@@ -12,7 +30,6 @@ body {
     margin: 0px;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
 }
 #title {
     font-size: 6rem;
