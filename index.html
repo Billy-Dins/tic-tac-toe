@@ -14,11 +14,21 @@
 <body>
     <div id="startScreen" class="hidden">
         <div id="playerSelection">
-            <div>hello</div>
+            <div id="gameModeSelectors">
+                <button id="pvc" class="gameModeBtn">Player VS Computer</button>
+                <div id="gameModeText">Or...</div>
+                <button id="pvp" class="gameModeBtn">Player VS Player</button>
+            </div>
         </div>
     </div>
     <main id="mainBoard">
         <header id="title">Tic-Tac-Toe</header>
+        <div id="playerOneCard">
+            <div id="playerOneContainer">
+                <div id="playerOne"></div>
+                <div id="playerOneMarker"></div>
+            </div>
+        </div>
         <div id="playArea">
             <button id="0" class="gridSquare zero" ></button>
             <button id="1" class="gridSquare one" ></button>
@@ -29,6 +39,12 @@
             <button id="6" class="gridSquare six" ></button>
             <button id="7" class="gridSquare seven" ></button>
             <button id="8" class="gridSquare eight" ></button>
+        </div>
+        <div id="playerTwoCard">
+            <div id="playerTwoContainer">
+                <div id="playerTwo"></div>
+                <div id="playerTwoMarker"></div>
+            </div>
         </div>
         <div id="displayContainer"></div>
     </main>

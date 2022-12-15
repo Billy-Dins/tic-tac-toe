@@ -8,13 +8,27 @@ const Gameboard = {
       Gameboard.counter = true
     }
   },
-  player: (name, marker) => {
-    return { name, marker }
+  setPlayers: () => {
+    const player = (name, marker) => {
+      return { name, marker }
+    }
+    const player1 = player('Player One', 'X')
+    const player2 = player('Player Two', 'O')
+    return [player1, player2]
+  },
+  setPlayerCards: () => {
+    const playerOne = document.querySelector('#playerOne')
+    const playerOneMarker = document.querySelector('#playerOneMarker')
+    playerOne.textContent = Gameboard.setPlayers()[0].name
+    playerOneMarker.textContent = `marker: ${Gameboard.setPlayers()[0].marker}`
+    const playerTwo = document.querySelector('#playerTwo')
+    const playerTwoMarker = document.querySelector('#playerTwoMarker')
+    playerTwo.textContent = Gameboard.setPlayers()[1].name
+    playerTwoMarker.textContent = `marker: ${Gameboard.setPlayers()[1].marker}`
   },
   init: () => {
-    const player1 = Gameboard.player('Luke', 'X')
-    const player2 = Gameboard.player('Elza', 'O')
-    return [player1, player2]
+    Gameboard.setPlayers()
+    Gameboard.setPlayerCards()
   }
 }
 
@@ -23,8 +37,6 @@ gridArea.forEach(element => element.addEventListener('click', () => {
   const location = element.getAttribute('id')
   if (Gameboard.gameboard[location] === '') {
     locationSelection(location, playerSelection())
-  } else {
-
   }
 })
 )
@@ -64,17 +76,21 @@ const playerSelection = () => {
 const winCondition = (winner) => {
   const displayContainer = document.querySelector('#displayContainer')
   displayContainer.setAttribute('style', 'z-index: 2;')
+
   const display = document.createElement('div')
   display.setAttribute('id', 'display')
+
   const displayText = document.createElement('div')
   displayText.setAttribute('id', 'textDisplay')
   displayText.textContent = `Winner is ${winner}!`
   display.appendChild(displayText)
+
   const resetBtn = document.createElement('button')
-  resetBtn.textContent = 'Reset'
+  resetBtn.textContent = 'Play Again!'
   resetBtn.setAttribute('onclick', 'resetGrid()')
   resetBtn.setAttribute('id', 'winnerReset')
   display.appendChild(resetBtn)
+
   displayContainer.appendChild(display)
 }
 
@@ -150,3 +166,5 @@ const resetGrid = () => {
   document.querySelector('#display').remove()
   renderPlayArea()
 }
+
+Gameboard.init()

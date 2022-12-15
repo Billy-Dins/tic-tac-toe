@@ -10,6 +10,8 @@ body {
 #startScreen {
     height: 100vh;
     width: 100vw;
+    z-index: 1;
+    position: absolute;
 }
 #playerSelection {
     display: flex;
@@ -18,7 +20,26 @@ body {
     justify-content: center;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+#gameModeSelectors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#gameModeText {
+    color: white;
+    margin: 10px;
+}
+.gameModeBtn {
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    font-size: 2rem;
+    margin: 50px;
+}
+.gameModeBtn:hover {
+    cursor: pointer;
 }
 #mainBoard {
     background-color: var(--main-bg-color);
@@ -30,6 +51,29 @@ body {
     margin: 0px;
     width: 100vw;
     height: 100vh;
+    z-index: 1;
+}
+#playerOneCard, #playerTwoCard {
+    grid-row: 2 / 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#playerTwoContainer, #playerOneContainer {
+    display: flex;
+    flex-direction: column;
+}
+#playerOneCard {
+    grid-column: 1 / 2;
+}
+#playerTwoCard {
+    grid-column: 3 / 4;
+}
+#playerOne, #playerTwo, #playerOneMarker, #playerTwoMarker {
+    margin: 15px;
 }
 #title {
     font-size: 6rem;
