@@ -26,6 +26,26 @@ const Gameboard = {
     playerTwo.textContent = Gameboard.setPlayers()[1].name
     playerTwoMarker.textContent = `marker: ${Gameboard.setPlayers()[1].marker}`
   },
+  renderPlayArea: () => {
+    document.querySelector('.gridSquare.zero').textContent =
+      Gameboard.gameboard[0]
+    document.querySelector('.gridSquare.one').textContent =
+      Gameboard.gameboard[1]
+    document.querySelector('.gridSquare.two').textContent =
+     Gameboard.gameboard[2]
+    document.querySelector('.gridSquare.three').textContent =
+     Gameboard.gameboard[3]
+    document.querySelector('.gridSquare.four').textContent =
+     Gameboard.gameboard[4]
+    document.querySelector('.gridSquare.five').textContent =
+     Gameboard.gameboard[5]
+    document.querySelector('.gridSquare.six').textContent =
+     Gameboard.gameboard[6]
+    document.querySelector('.gridSquare.seven').textContent =
+     Gameboard.gameboard[7]
+    document.querySelector('.gridSquare.eight').textContent =
+     Gameboard.gameboard[8]
+  },
   init: () => {
     Gameboard.setPlayers()
     Gameboard.setPlayerCards()
@@ -40,27 +60,6 @@ gridArea.forEach(element => element.addEventListener('click', () => {
   }
 })
 )
-
-const renderPlayArea = () => {
-  document.querySelector('.gridSquare.zero').textContent =
-    Gameboard.gameboard[0]
-  document.querySelector('.gridSquare.one').textContent =
-    Gameboard.gameboard[1]
-  document.querySelector('.gridSquare.two').textContent =
-   Gameboard.gameboard[2]
-  document.querySelector('.gridSquare.three').textContent =
-   Gameboard.gameboard[3]
-  document.querySelector('.gridSquare.four').textContent =
-   Gameboard.gameboard[4]
-  document.querySelector('.gridSquare.five').textContent =
-   Gameboard.gameboard[5]
-  document.querySelector('.gridSquare.six').textContent =
-   Gameboard.gameboard[6]
-  document.querySelector('.gridSquare.seven').textContent =
-   Gameboard.gameboard[7]
-  document.querySelector('.gridSquare.eight').textContent =
-   Gameboard.gameboard[8]
-}
 
 // Alternates between player one's turn and player two's turn
 const playerSelection = () => {
@@ -149,7 +148,7 @@ const checkWinCondition = () => {
 
 const locationSelection = (id, selection) => {
   const makeSelection = Gameboard.gameboard.splice(id, 1, selection)
-  renderPlayArea()
+  Gameboard.renderPlayArea()
   if (checkWinCondition() === true) {
     console.log('hello')
   }
@@ -164,7 +163,7 @@ const resetGrid = () => {
   document.querySelector('#displayContainer').removeAttribute('style', 'z-index: 1;')
   Gameboard.counter = true
   document.querySelector('#display').remove()
-  renderPlayArea()
+  Gameboard.renderPlayArea()
 }
 
 Gameboard.init()
