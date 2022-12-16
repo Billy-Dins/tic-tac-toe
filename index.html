@@ -12,12 +12,12 @@
     <script defer src="app.js"></script>
 </head>
 <body>
-    <div id="startScreen" class="hidden">
+    <div id="startScreen">
         <div id="playerSelection">
             <div id="gameModeSelectors">
-                <button id="pvc" class="gameModeBtn">Player VS Computer</button>
+                <button id="pvc" class="gameModeBtn" onclick="Startscreen.addHiddenClass()">Player VS Computer</button>
                 <div id="gameModeText">Or...</div>
-                <button id="pvp" class="gameModeBtn">Player VS Player</button>
+                <button id="pvp" class="gameModeBtn" onclick="Startscreen.addHiddenClass()">Player VS Player</button>
             </div>
         </div>
     </div>
@@ -47,6 +47,11 @@
             </div>
         </div>
         <div id="displayContainer"></div>
+
+        <div id="bottomSection">
+            <button id="changeGameModeBtn" onclick="Gameboard.changeGameMode()">Change Game Mode</button>
+            <button id="boardResetBtn">Reset Board</button>
+        </div>
     </main>
 </body>
 </html>

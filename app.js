@@ -154,7 +154,17 @@ const Gameboard = {
       Gameboard.winCondition('O')
       return true
     }
+  },
+  changeGameMode: () => {
+    const changeMode = document.querySelector('#startScreen')
+    changeMode.classList.remove('hidden')
   }
 }
 
+const Startscreen = {
+  addHiddenClass: () => {
+    const changeMode = document.querySelector('#startScreen')
+    changeMode.classList.add('hidden')
+  }
+}
 Gameboard.init()
