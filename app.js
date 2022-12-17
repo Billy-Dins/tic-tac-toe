@@ -14,6 +14,7 @@ const Gameboard = {
     Gameboard.setPlayerCards()
     Gameboard.renderPlayArea()
     Gameboard.setPlayerHighlight()
+    Gameboard.checkDraw(Gameboard.gameboard)
   },
   counter: true,
   changeTurn: () => {
@@ -23,6 +24,11 @@ const Gameboard = {
     } else {
       Gameboard.setPlayerHighlight('2')
       Gameboard.counter = true
+    }
+  },
+  checkDraw: (arr) => {
+    if (arr.every(element => element !== '') && Gameboard.checkWinCondition() !== true) {
+      Gameboard.winCondition('draw')
     }
   },
   setPlayerHighlight: () => {
@@ -78,27 +84,11 @@ const Gameboard = {
     document.querySelector('.gridSquare.eight').textContent =
      Gameboard.gameboard[8]
   },
-  winCondition: (winner) => {
-    const displayContainer = document.querySelector('#displayContainer')
-    displayContainer.setAttribute('style', 'z-index: 2;')
-    const display = document.createElement('div')
-    display.setAttribute('id', 'display')
-    const displayText = document.createElement('div')
-    displayText.setAttribute('id', 'textDisplay')
-    displayText.textContent = `Winner is ${winner}!`
-    display.appendChild(displayText)
-    const resetBtn = document.createElement('button')
-    resetBtn.textContent = 'Play Again!'
-    resetBtn.setAttribute('onclick', 'Gameboard.resetGrid()')
-    resetBtn.setAttribute('id', 'winnerReset')
-    display.appendChild(resetBtn)
-    displayContainer.appendChild(display)
-  },
   locationSelection: (id, selection) => {
     const makeSelection = Gameboard.gameboard.splice(id, 1, selection)
     Gameboard.init()
     if (Gameboard.checkWinCondition() === true) {
-      console.log('hello')
+      Gameboard.winCondition(selection)
     }
     return makeSelection
   },
@@ -109,8 +99,8 @@ const Gameboard = {
     document.querySelector('#displayContainer').removeAttribute('style', 'z-index: 1;')
     if (document.querySelector('#display') !== null) {
       document.querySelector('#display').remove()
-      Gameboard.init()
-    } else { Gameboard.init() }
+      Gameboard.renderPlayArea()
+    } else { Gameboard.renderPlayArea() }
   },
   // Alternates between player one's turn and player two's turn
   playerSelection: () => {
@@ -122,55 +112,58 @@ const Gameboard = {
       return 'O'
     }
   },
+  winCondition: (outcome) => {
+    const displayContainer = document.querySelector('#displayContainer')
+    displayContainer.setAttribute('style', 'z-index: 2;')
+    const display = document.createElement('div')
+    display.setAttribute('id', 'display')
+    const displayText = document.createElement('div')
+    displayText.setAttribute('id', 'textDisplay')
+    if (outcome === 'X' || outcome === 'O') {
+      displayText.textContent = `${outcome} is the winner!`
+    } else {
+      displayText.textContent = "It's a draw!"
+    } display.appendChild(displayText)
+    const resetBtn = document.createElement('button')
+    resetBtn.textContent = 'Play Again!'
+    resetBtn.setAttribute('onclick', 'Gameboard.resetGrid()')
+    resetBtn.setAttribute('id', 'winnerReset')
+    display.appendChild(resetBtn)
+    displayContainer.appendChild(display)
+  },
   checkWinCondition: () => {
     const board = Gameboard.gameboard
     if (board[0] === 'X' && board[1] === 'X' && board[2] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[0] === 'O' && board[1] === 'O' && board[2] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[3] === 'X' && board[4] === 'X' && board[5] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[3] === 'O' && board[4] === 'O' && board[5] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[6] === 'X' && board[7] === 'X' && board[8] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[6] === 'O' && board[7] === 'O' && board[8] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[0] === 'X' && board[3] === 'X' && board[6] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[0] === 'O' && board[3] === 'O' && board[6] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[1] === 'X' && board[4] === 'X' && board[7] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[1] === 'O' && board[4] === 'O' && board[7] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[2] === 'X' && board[5] === 'X' && board[8] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[2] === 'O' && board[5] === 'O' && board[8] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[0] === 'X' && board[4] === 'X' && board[8] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[0] === 'O' && board[4] === 'O' && board[8] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     } else if (board[2] === 'X' && board[4] === 'X' && board[6] === 'X') {
-      Gameboard.winCondition('Player One')
       return true
     } else if (board[2] === 'O' && board[4] === 'O' && board[6] === 'O') {
-      Gameboard.winCondition('Player Two')
       return true
     }
   },

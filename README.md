@@ -22,5 +22,4 @@ The intent of this project is to use as little global code as possible. Instead 
 - function then gets value of selected square and changes with the input value of players marker key-value.
 
 ----- To Do: 16 Dec 2022-----
-1. Add a draw alert
-2. Implement AI for opponent.
+1. Implement AI for opponent.
