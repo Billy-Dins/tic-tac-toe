@@ -107,7 +107,6 @@ const Gameboard = {
       Gameboard.gameboard.splice(i, 1, '')
     };
     document.querySelector('#displayContainer').removeAttribute('style', 'z-index: 1;')
-    Gameboard.counter = true
     if (document.querySelector('#display') !== null) {
       document.querySelector('#display').remove()
       Gameboard.init()
