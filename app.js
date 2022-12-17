@@ -9,6 +9,11 @@ gridArea.forEach(element => element.addEventListener('click', () => {
 
 const Gameboard = {
   gameboard: ['', '', '', '', '', '', '', '', ''],
+  init: () => {
+    Gameboard.setPlayers()
+    Gameboard.setPlayerCards()
+    Gameboard.renderPlayArea()
+  },
   counter: true,
   changeTurn: () => {
     if (Gameboard.counter === true) {
@@ -55,11 +60,6 @@ const Gameboard = {
     document.querySelector('.gridSquare.eight').textContent =
      Gameboard.gameboard[8]
   },
-  init: () => {
-    Gameboard.setPlayers()
-    Gameboard.setPlayerCards()
-    Gameboard.renderPlayArea()
-  },
   winCondition: (winner) => {
     const displayContainer = document.querySelector('#displayContainer')
     displayContainer.setAttribute('style', 'z-index: 2;')
@@ -90,8 +90,10 @@ const Gameboard = {
     };
     document.querySelector('#displayContainer').removeAttribute('style', 'z-index: 1;')
     Gameboard.counter = true
-    document.querySelector('#display').remove()
-    Gameboard.renderPlayArea()
+    if (document.querySelector('#display') !== null) {
+      document.querySelector('#display').remove()
+      Gameboard.renderPlayArea()
+    } else { Gameboard.renderPlayArea() }
   },
   // Alternates between player one's turn and player two's turn
   playerSelection: () => {
@@ -106,52 +108,52 @@ const Gameboard = {
   checkWinCondition: () => {
     const board = Gameboard.gameboard
     if (board[0] === 'X' && board[1] === 'X' && board[2] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[0] === 'O' && board[1] === 'O' && board[2] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[3] === 'X' && board[4] === 'X' && board[5] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[3] === 'O' && board[4] === 'O' && board[5] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[6] === 'X' && board[7] === 'X' && board[8] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[6] === 'O' && board[7] === 'O' && board[8] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[0] === 'X' && board[3] === 'X' && board[6] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[0] === 'O' && board[3] === 'O' && board[6] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[1] === 'X' && board[4] === 'X' && board[7] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[1] === 'O' && board[4] === 'O' && board[7] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[2] === 'X' && board[5] === 'X' && board[8] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[2] === 'O' && board[5] === 'O' && board[8] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[0] === 'X' && board[4] === 'X' && board[8] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[0] === 'O' && board[4] === 'O' && board[8] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     } else if (board[2] === 'X' && board[4] === 'X' && board[6] === 'X') {
-      Gameboard.winCondition('X')
+      Gameboard.winCondition('Player One')
       return true
     } else if (board[2] === 'O' && board[4] === 'O' && board[6] === 'O') {
-      Gameboard.winCondition('O')
+      Gameboard.winCondition('Player Two')
       return true
     }
   },

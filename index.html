@@ -15,7 +15,7 @@
     <div id="startScreen">
         <div id="playerSelection">
             <div id="gameModeSelectors">
-                <button id="pvc" class="gameModeBtn" onclick="Startscreen.addHiddenClass()">Player VS Computer</button>
+                <button id="pvc" class="gameModeBtn">Player VS Computer</button>
                 <div id="gameModeText">Or...</div>
                 <button id="pvp" class="gameModeBtn" onclick="Startscreen.addHiddenClass()">Player VS Player</button>
             </div>
@@ -50,7 +50,7 @@
 
         <div id="bottomSection">
             <button id="changeGameModeBtn" onclick="Gameboard.changeGameMode()">Change Game Mode</button>
-            <button id="boardResetBtn">Reset Board</button>
+            <button id="boardResetBtn" onclick="Gameboard.resetGrid()">Reset Board</button>
         </div>
     </main>
 </body>
