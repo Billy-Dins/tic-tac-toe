@@ -114,7 +114,7 @@ const Gameboard = {
   },
   winCondition: (outcome) => {
     const displayContainer = document.querySelector('#displayContainer')
-    displayContainer.setAttribute('style', 'z-index: 2;')
+    displayContainer.setAttribute('style', 'z-index: 1;')
     const display = document.createElement('div')
     display.setAttribute('id', 'display')
     const displayText = document.createElement('div')
