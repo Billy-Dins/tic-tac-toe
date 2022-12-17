@@ -62,9 +62,11 @@ body {
 }
 #playerOneCard {
     grid-column: 1 / 2;
+    font-size: .7em;
 }
 #playerTwoCard {
     grid-column: 3 / 4;
+    font-size: .7em;
 }
 #playerOne, #playerTwo, #playerOneMarker, #playerTwoMarker {
     margin: 15px;
@@ -85,8 +87,8 @@ body {
 #playArea {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    width: 100%;
-    height: 100%;
+    width: 50vw;
+    height: 50vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -109,7 +111,7 @@ body {
 .gridSquare {
     background-color: var(--main-bg-color);
     border: none;
-    font-size: 5rem;
+    font-size: 4rem;
     padding: 10px;
 }
 .gridSquare:hover {
@@ -149,8 +151,8 @@ body {
     background: none;
     background-color: rgb(127, 240, 255);
     border-radius: 5px;
-    font-size: 2rem;
     width: auto;
+    font-size: 1.5rem;
     margin: 10% 5% 5% 10%; 
     box-shadow: 2px 2px 10px black;
 }
