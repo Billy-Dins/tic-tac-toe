@@ -79,7 +79,8 @@ body {
     border-radius: 50%;
     box-shadow: 0px 0px 5px;
     width: 60%;
-    height: 30%;
+    height: 20%;
+    max-height: 20%;
     font-size: 3vw;
 }
 #title {
@@ -96,6 +97,7 @@ body {
     grid-row: 2 / 3;
     width: 50vw;
     height: 50vh;
+    max-width: 500px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -112,13 +114,13 @@ body {
     text-shadow: 2px 2px rgb(248, 91, 248);
     color:  rgb(127, 240, 255);
     height: 50vh;
-    font-size: 3rem;
+    font-size: 5vw;
     font-family: 'Kenia', cursive;
 }
 .gridSquare {
     background-color: var(--main-bg-color);
     border: none;
-    font-size: 3rem;
+    font-size: 8vw;
     padding: 10px;
 }
 .gridSquare:hover {
