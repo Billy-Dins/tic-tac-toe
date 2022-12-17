@@ -16,10 +16,6 @@ The intent of this project is to use as little global code as possible. Instead 
 5. Build the logic that checks for when the game is over.
 
 
------ Testing -----
-- init returns 2 players and their associated marker.
-- if turn counter is 1, run function with value of array[0] else run function with value of array[1]
-- function then gets value of selected square and changes with the input value of players marker key-value.
-
------ To Do: 16 Dec 2022-----
+----- To Do: 17 Dec 2022-----
 1. Implement AI for opponent.
+2. Add functionality on mobile
