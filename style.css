@@ -62,10 +62,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-#playerTwoContainer, #playerOneContainer {
-    display: flex;
-    flex-direction: column;
-}
 #playerOneCard {
     grid-column: 1 / 2;
 }

@@ -13,13 +13,31 @@ const Gameboard = {
     Gameboard.setPlayers()
     Gameboard.setPlayerCards()
     Gameboard.renderPlayArea()
+    Gameboard.setPlayerHighlight()
   },
   counter: true,
   changeTurn: () => {
     if (Gameboard.counter === true) {
+      Gameboard.setPlayerHighlight('1')
       Gameboard.counter = false
     } else {
+      Gameboard.setPlayerHighlight('2')
       Gameboard.counter = true
+    }
+  },
+  setPlayerHighlight: () => {
+    const containerOne = document.querySelector('#playerContainer1')
+    const containerTwo = document.querySelector('#playerContainer2')
+    if (Gameboard.counter === true) {
+      if (containerOne.getAttribute('style') === null) {
+        containerTwo.removeAttribute('style')
+        containerOne.setAttribute('style', 'background-color: yellow;')
+      } else {
+        containerOne.setAttribute('style', 'background-color: yellow;')
+      }
+    } else {
+      containerOne.removeAttribute('style')
+      containerTwo.setAttribute('style', 'background-color: yellow;')
     }
   },
   setPlayers: () => {
@@ -78,7 +96,7 @@ const Gameboard = {
   },
   locationSelection: (id, selection) => {
     const makeSelection = Gameboard.gameboard.splice(id, 1, selection)
-    Gameboard.renderPlayArea()
+    Gameboard.init()
     if (Gameboard.checkWinCondition() === true) {
       console.log('hello')
     }
@@ -92,8 +110,8 @@ const Gameboard = {
     Gameboard.counter = true
     if (document.querySelector('#display') !== null) {
       document.querySelector('#display').remove()
-      Gameboard.renderPlayArea()
-    } else { Gameboard.renderPlayArea() }
+      Gameboard.init()
+    } else { Gameboard.init() }
   },
   // Alternates between player one's turn and player two's turn
   playerSelection: () => {
@@ -158,6 +176,7 @@ const Gameboard = {
     }
   },
   changeGameMode: () => {
+    Gameboard.resetGrid()
     const changeMode = document.querySelector('#startScreen')
     changeMode.classList.remove('hidden')
   }

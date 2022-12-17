@@ -23,5 +23,6 @@ The intent of this project is to use as little global code as possible. Instead 
 
 ----- To Do: 16 Dec 2022-----
 1. Remove winner overlay if you click change game mode after win.
-1. Add highlight for current players turn on PVP mode.
-2. Implement AI for opponent.
+2. Add highlight for current players turn on PVP mode.
+3. Add a draw alert
+4. Implement AI for opponent.
