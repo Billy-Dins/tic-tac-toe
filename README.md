@@ -18,4 +18,3 @@ The intent of this project is to use as little global code as possible. Instead 
 
 ----- To Do: 17 Dec 2022-----
 1. Implement AI for opponent.
-2. Add functionality on mobile
