@@ -46,7 +46,7 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: .5fr 1fr .5fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     margin: 0px;
     width: 100vw;
@@ -54,24 +54,31 @@ body {
     z-index: 1;
 }
 #playerOneCard, #playerTwoCard {
-    grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    grid-row: 2 / 3;
+    min-height: 500px;
 }
 #playerOneCard {
     grid-column: 1 / 2;
-    font-size: .7em;
 }
 #playerTwoCard {
     grid-column: 3 / 4;
-    font-size: .7em;
 }
 #playerOne, #playerTwo, #playerOneMarker, #playerTwoMarker {
+    font-size: 1em;
     margin: 15px;
 }
 #playerContainer1, #playerContainer2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 50%;
+    max-width: fit-content;
+    min-width:auto;
     border-radius: 50%;
     box-shadow: 0px 0px 5px;
 }
@@ -104,14 +111,14 @@ body {
     background-color: rgba(0, 0, 0, 0.39);
     text-shadow: 2px 2px rgb(248, 91, 248);
     color:  rgb(127, 240, 255);
-    height: 100%;
+    height: 50vh;
     font-size: 3rem;
     font-family: 'Kenia', cursive;
 }
 .gridSquare {
     background-color: var(--main-bg-color);
     border: none;
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 10px;
 }
 .gridSquare:hover {
