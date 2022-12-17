@@ -31,13 +31,13 @@ const Gameboard = {
     if (Gameboard.counter === true) {
       if (containerOne.getAttribute('style') === null) {
         containerTwo.removeAttribute('style')
-        containerOne.setAttribute('style', 'background-color: yellow;')
+        containerOne.setAttribute('style', 'background-color: rgb(248, 91, 248);')
       } else {
-        containerOne.setAttribute('style', 'background-color: yellow;')
+        containerOne.setAttribute('style', 'background-color: rgb(248, 91, 248);')
       }
     } else {
       containerOne.removeAttribute('style')
-      containerTwo.setAttribute('style', 'background-color: yellow;')
+      containerTwo.setAttribute('style', 'background-color: rgb(248, 91, 248);')
     }
   },
   setPlayers: () => {

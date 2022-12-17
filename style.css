@@ -71,6 +71,10 @@ body {
 #playerOne, #playerTwo, #playerOneMarker, #playerTwoMarker {
     margin: 15px;
 }
+#playerContainer1, #playerContainer2 {
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px;
+}
 #title {
     font-size: 6rem;
     font-family: 'Kenia', cursive;
