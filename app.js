@@ -2,49 +2,21 @@ const gridArea = document.querySelectorAll('.gridSquare')
 gridArea.forEach(element => element.addEventListener('click', () => {
   const location = element.getAttribute('id')
   if (Gameboard.gameboard[location] === '') {
-    Gameboard.locationSelection(location, Gameboard.playerSelection())
+    Gameboard.locationSelection(location, Gameboard.changeTurn())
   }
 })
 )
 
 const Gameboard = {
+  gamemode: '',
   gameboard: ['', '', '', '', '', '', '', '', ''],
   init: () => {
     Gameboard.setPlayers()
     Gameboard.setPlayerCards()
-    Gameboard.renderPlayArea()
     Gameboard.setPlayerHighlight()
-    Gameboard.checkDraw(Gameboard.gameboard)
-  },
-  counter: true,
-  changeTurn: () => {
-    if (Gameboard.counter === true) {
-      Gameboard.setPlayerHighlight('1')
-      Gameboard.counter = false
-    } else {
-      Gameboard.setPlayerHighlight('2')
-      Gameboard.counter = true
-    }
-  },
-  checkDraw: (arr) => {
-    if (arr.every(element => element !== '') && Gameboard.checkWinCondition() !== true) {
-      Gameboard.winCondition('draw')
-    }
-  },
-  setPlayerHighlight: () => {
-    const containerOne = document.querySelector('#playerContainer1')
-    const containerTwo = document.querySelector('#playerContainer2')
-    if (Gameboard.counter === true) {
-      if (containerOne.getAttribute('style') === null) {
-        containerTwo.removeAttribute('style')
-        containerOne.setAttribute('style', 'background-color: rgb(248, 91, 248);')
-      } else {
-        containerOne.setAttribute('style', 'background-color: rgb(248, 91, 248);')
-      }
-    } else {
-      containerOne.removeAttribute('style')
-      containerTwo.setAttribute('style', 'background-color: rgb(248, 91, 248);')
-    }
+    Gameboard.renderPlayArea()
+    Gameboard.checkDraw()
+    Gameboard.checkGameMode()
   },
   setPlayers: () => {
     const player = (name, marker) => {
@@ -63,6 +35,21 @@ const Gameboard = {
     const playerTwoMarker = document.querySelector('#playerTwoMarker')
     playerTwo.textContent = Gameboard.setPlayers()[1].name
     playerTwoMarker.textContent = `marker: ${Gameboard.setPlayers()[1].marker}`
+  },
+  setPlayerHighlight: () => {
+    const containerOne = document.querySelector('#playerContainer1')
+    const containerTwo = document.querySelector('#playerContainer2')
+    if (Gameboard.counter === true) {
+      if (containerOne.getAttribute('style') === null) {
+        containerTwo.removeAttribute('style')
+        containerOne.setAttribute('style', 'background-color: rgb(248, 91, 248);')
+      } else {
+        containerOne.setAttribute('style', 'background-color: rgb(248, 91, 248);')
+      }
+    } else {
+      containerOne.removeAttribute('style')
+      containerTwo.setAttribute('style', 'background-color: rgb(248, 91, 248);')
+    }
   },
   renderPlayArea: () => {
     document.querySelector('.gridSquare.zero').textContent =
@@ -84,6 +71,37 @@ const Gameboard = {
     document.querySelector('.gridSquare.eight').textContent =
      Gameboard.gameboard[8]
   },
+  checkDraw: (arr) => {
+    if (Gameboard.gameboard.every(element => element !== '') && Gameboard.checkWinCondition() !== true) {
+      Gameboard.winCondition('draw')
+    }
+  },
+  makeAIMove: () => {
+    const num = Math.floor(Math.random() * 9)
+    if (Gameboard.gameboard[num] === '') {
+      Gameboard.counter = true
+      Gameboard.locationSelection(num, 'O')
+    } else {
+      Gameboard.checkGameMode()
+    }
+  },
+  checkGameMode: () => {
+    if (Gameboard.gamemode === 'pvc' && Gameboard.counter === false) {
+      Gameboard.makeAIMove()
+    }
+  },
+  counter: true,
+  changeTurn: () => {
+    if (Gameboard.counter === true) {
+      Gameboard.setPlayerHighlight('1')
+      Gameboard.counter = false
+      return 'X'
+    } else {
+      Gameboard.setPlayerHighlight('2')
+      Gameboard.counter = true
+      return 'O'
+    }
+  },
   locationSelection: (id, selection) => {
     const makeSelection = Gameboard.gameboard.splice(id, 1, selection)
     Gameboard.init()
@@ -101,16 +119,6 @@ const Gameboard = {
       document.querySelector('#display').remove()
       Gameboard.renderPlayArea()
     } else { Gameboard.renderPlayArea() }
-  },
-  // Alternates between player one's turn and player two's turn
-  playerSelection: () => {
-    if (Gameboard.counter === true) {
-      Gameboard.changeTurn()
-      return 'X'
-    } else {
-      Gameboard.changeTurn()
-      return 'O'
-    }
   },
   winCondition: (outcome) => {
     const displayContainer = document.querySelector('#displayContainer')
@@ -175,9 +183,20 @@ const Gameboard = {
 }
 
 const Startscreen = {
+  Gamemode: (gametype) => {
+    Startscreen.addHiddenClass()
+    if (gametype === 'pvc') {
+      Gameboard.gamemode = 'pvc'
+      Gameboard.init()
+    } else {
+      Gameboard.gamemode = 'pvp'
+    }
+  },
   addHiddenClass: () => {
     const changeMode = document.querySelector('#startScreen')
     changeMode.classList.add('hidden')
   }
 }
+
 Gameboard.init()
+Gameboard.checkGameMode()
