@@ -14,7 +14,3 @@ The intent of this project is to use as little global code as possible. Instead 
 4. include logic that keeps players from playing in already taken spots.
 
 5. Build the logic that checks for when the game is over.
-
-
------ To Do: 18 Dec 2022-----
-1. Player marker highlights are super buggy

@@ -71,7 +71,7 @@ const Gameboard = {
     document.querySelector('.gridSquare.eight').textContent =
      Gameboard.gameboard[8]
   },
-  checkDraw: (arr) => {
+  checkDraw: () => {
     if (Gameboard.gameboard.every(element => element !== '') && Gameboard.checkWinCondition() !== true) {
       Gameboard.winCondition('draw')
     }
@@ -107,13 +107,14 @@ const Gameboard = {
       Gameboard.gameboard.splice(id, 1, selection)
       Gameboard.renderPlayArea()
       Gameboard.checkDraw()
-      if (Gameboard.checkWinCondition() === true) {
+      if (Gameboard.checkWinCondition() === true && Gameboard.gamemode === 'pvc') {
+        Gameboard.winCondition(selection)
+        Gameboard.counter = true
+      } else if (Gameboard.checkWinCondition() === true) {
         Gameboard.winCondition(selection)
       } else {
         Gameboard.checkGameMode()
       }
-    } else {
-      console.log('error at location selection')
     }
   },
   resetGrid: () => {
