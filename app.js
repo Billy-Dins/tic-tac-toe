@@ -1,7 +1,7 @@
 const gridArea = document.querySelectorAll('.gridSquare')
 gridArea.forEach(element => element.addEventListener('click', () => {
   const location = element.getAttribute('id')
-  if (Gameboard.gameboard[location] === '') {
+  if (Gameboard.gameboard[location] === '' && Gameboard.checkWinCondition() === false) {
     Gameboard.locationSelection(location, Gameboard.changeTurn())
   }
 })
@@ -103,12 +103,18 @@ const Gameboard = {
     }
   },
   locationSelection: (id, selection) => {
-    const makeSelection = Gameboard.gameboard.splice(id, 1, selection)
-    Gameboard.init()
-    if (Gameboard.checkWinCondition() === true) {
-      Gameboard.winCondition(selection)
+    if (Gameboard.checkWinCondition() === false) {
+      Gameboard.gameboard.splice(id, 1, selection)
+      Gameboard.renderPlayArea()
+      Gameboard.checkDraw()
+      if (Gameboard.checkWinCondition() === true) {
+        Gameboard.winCondition(selection)
+      } else {
+        Gameboard.checkGameMode()
+      }
+    } else {
+      console.log('error at location selection')
     }
-    return makeSelection
   },
   resetGrid: () => {
     for (let i = 0; i < Gameboard.gameboard.length; i++) {
@@ -173,6 +179,8 @@ const Gameboard = {
       return true
     } else if (board[2] === 'O' && board[4] === 'O' && board[6] === 'O') {
       return true
+    } else {
+      return false
     }
   },
   changeGameMode: () => {

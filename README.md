@@ -16,5 +16,5 @@ The intent of this project is to use as little global code as possible. Instead 
 5. Build the logic that checks for when the game is over.
 
 
------ To Do: 17 Dec 2022-----
-1. Implement AI for opponent.
+----- To Do: 18 Dec 2022-----
+1. Player marker highlights are super buggy
