@@ -1,3 +1,4 @@
+// Gets value of grid square selected
 const gridArea = document.querySelectorAll('.gridSquare')
 gridArea.forEach(element => element.addEventListener('click', () => {
   const location = element.getAttribute('id')
@@ -113,6 +114,7 @@ const Gameboard = {
       } else if (Gameboard.checkWinCondition() === true) {
         Gameboard.winCondition(selection)
       } else {
+        Gameboard.setPlayerHighlight()
         Gameboard.checkGameMode()
       }
     }
