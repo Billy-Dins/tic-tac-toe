@@ -5,7 +5,7 @@ The intent of this project is to use as little global code as possible. Instead 
 ## Challenges
 This was my biggest project with the most moving parts yet. As such I had many challenges melding everything together. As mentioned above, the project put emphasis on creating modular code and this was one of my first attempts where I wrote everything entirely by myself.
 
------ to do: 19 Dec 2022 -----
+----- to do: 04 Jan 2023 -----
 
 1. code is super sloppy and not as module as I would like.
   - One module for initializing the gameboard on start up.
