@@ -2,7 +2,7 @@
 const gridArea = document.querySelectorAll('.gridSquare')
 gridArea.forEach(element => element.addEventListener('click', () => {
   const location = element.getAttribute('id')
-  if (Gameboard.gameboard[location] === '' && Gameboard.checkWinCondition() === false) {
+  if (Gameboard.board[location] === '' && Gameboard.checkWinCondition() === false) {
     Gameboard.locationSelection(location, Gameboard.changeTurn())
   }
 })
@@ -10,7 +10,7 @@ gridArea.forEach(element => element.addEventListener('click', () => {
 
 const Gameboard = {
   gamemode: '',
-  gameboard: ['', '', '', '', '', '', '', '', ''],
+  board: ['', '', '', '', '', '', '', '', ''],
   init: () => {
     Gameboard.setPlayers()
     Gameboard.setPlayerCards()
@@ -54,32 +54,32 @@ const Gameboard = {
   },
   renderPlayArea: () => {
     document.querySelector('.gridSquare.zero').textContent =
-      Gameboard.gameboard[0]
+      Gameboard.board[0]
     document.querySelector('.gridSquare.one').textContent =
-      Gameboard.gameboard[1]
+      Gameboard.board[1]
     document.querySelector('.gridSquare.two').textContent =
-     Gameboard.gameboard[2]
+     Gameboard.board[2]
     document.querySelector('.gridSquare.three').textContent =
-     Gameboard.gameboard[3]
+     Gameboard.board[3]
     document.querySelector('.gridSquare.four').textContent =
-     Gameboard.gameboard[4]
+     Gameboard.board[4]
     document.querySelector('.gridSquare.five').textContent =
-     Gameboard.gameboard[5]
+     Gameboard.board[5]
     document.querySelector('.gridSquare.six').textContent =
-     Gameboard.gameboard[6]
+     Gameboard.board[6]
     document.querySelector('.gridSquare.seven').textContent =
-     Gameboard.gameboard[7]
+     Gameboard.board[7]
     document.querySelector('.gridSquare.eight').textContent =
-     Gameboard.gameboard[8]
+     Gameboard.board[8]
   },
   checkDraw: () => {
-    if (Gameboard.gameboard.every(element => element !== '') && Gameboard.checkWinCondition() !== true) {
+    if (Gameboard.board.every(element => element !== '') && Gameboard.checkWinCondition() !== true) {
       Gameboard.winCondition('draw')
     }
   },
   makeAIMove: () => {
     const num = Math.floor(Math.random() * 9)
-    if (Gameboard.gameboard[num] === '') {
+    if (Gameboard.board[num] === '') {
       Gameboard.counter = true
       Gameboard.locationSelection(num, 'O')
     } else {
@@ -105,7 +105,7 @@ const Gameboard = {
   },
   locationSelection: (id, selection) => {
     if (Gameboard.checkWinCondition() === false) {
-      Gameboard.gameboard.splice(id, 1, selection)
+      Gameboard.board.splice(id, 1, selection)
       Gameboard.renderPlayArea()
       Gameboard.checkDraw()
       if (Gameboard.checkWinCondition() === true && Gameboard.gamemode === 'pvc') {
@@ -121,8 +121,8 @@ const Gameboard = {
   },
   resetGrid: () => {
     Gameboard.setPlayerHighlight()
-    for (let i = 0; i < Gameboard.gameboard.length; i++) {
-      Gameboard.gameboard.splice(i, 1, '')
+    for (let i = 0; i < Gameboard.board.length; i++) {
+      Gameboard.board.splice(i, 1, '')
     };
     document.querySelector('#displayContainer').removeAttribute('style', 'z-index: 1;')
     if (document.querySelector('#display') !== null) {
@@ -150,7 +150,7 @@ const Gameboard = {
     displayContainer.appendChild(display)
   },
   checkWinCondition: () => {
-    const board = Gameboard.gameboard
+    const board = Gameboard.board
     if (board[0] === 'X' && board[1] === 'X' && board[2] === 'X') {
       return true
     } else if (board[0] === 'O' && board[1] === 'O' && board[2] === 'O') {
