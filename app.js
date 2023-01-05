@@ -120,6 +120,7 @@ const Gameboard = {
     }
   },
   resetGrid: () => {
+    Gameboard.setPlayerHighlight()
     for (let i = 0; i < Gameboard.gameboard.length; i++) {
       Gameboard.gameboard.splice(i, 1, '')
     };
